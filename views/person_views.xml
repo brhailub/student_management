@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Person Tree View -->
+    <record id="view_person_tree" model="ir.ui.view">
+        <field name="name">person.tree</field>
+        <field name="model">person.person</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="id_no"/>
+                <field name="gender"/>
+                <field name="birth_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Person Form View -->
+    <record id="view_person_form" model="ir.ui.view">
+        <field name="name">person.form</field>
+        <field name="model">person.person</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="id_no" readonly="1"/>
+                        <field name="gender"/>
+                        <field name="birth_date"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Person Search View -->
+    <record id="view_person_search" model="ir.ui.view">
+        <field name="name">person.search</field>
+        <field name="model">person.person</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="gender"/>
+                <filter string="Active" name="active" domain="[('active','=',True)]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Person Action -->
+    <record id="action_person" model="ir.actions.act_window">
+        <field name="name">Persons</field>
+        <field name="res_model">person.person</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_person_search"/>
+        <field name="context">{'default_active': True}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create a new person record</p>
+        </field>
+    </record>
+</odoo>

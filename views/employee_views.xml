@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_employee_form_inherit" model="ir.ui.view">
+        <field name="name">hr.employee.form.inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <!-- Add is_teacher field after department -->
+            <xpath expr="//field[@name='department_id']" position="after">
+                <field name="is_teacher"/>
+            </xpath>
+            
+            <!-- Add button box inside sheet -->
+            <xpath expr="//sheet" position="inside">
+                <div class="oe_button_box" name="button_box">
+                    <button name="show_student_count" type="object" 
+                            string="Show Student Count" 
+                            class="oe_stat_button"
+                            icon="fa-users"
+                            />
+                </div>
+            </xpath>
+            
+            <!-- Students page -->
+            <xpath expr="//page[@name='personal_information']" position="after">
+                <page string="Students" groups="base.group_user">
+                    <field name="students_ids" domain="[('teacher_id','=',id)]">
+                        <tree>
+                            <field name="name"/>
+                            <field name="grade"/>
+                            <field name="section"/>
+                            <field name="mark"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

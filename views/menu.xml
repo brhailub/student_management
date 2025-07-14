@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Main Menu Structure -->
+    <menuitem id="menu_student_root" name="Student Management" sequence="10"/>
+    
+    <!-- Person Submenu -->
+    <menuitem id="menu_person" name="Persons" parent="menu_student_root" action="action_person" sequence="5"/>
+    
+    <!-- Student Submenu -->
+    <menuitem id="menu_student" name="Students" parent="menu_student_root" action="action_student" sequence="10"/>
+    
+    <!-- Teacher Submenu (from HR) -->
+    <menuitem id="menu_teacher" name="Teachers" parent="menu_student_root" action="hr.open_view_employee_list_my" sequence="15"/>
+</odoo>

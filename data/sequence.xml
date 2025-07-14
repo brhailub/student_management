@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="seq_student_id" model="ir.sequence">
+        <field name="name">Student ID Sequence</field>
+        <field name="code">student.id.sequence</field>
+        <field name="prefix">STU/%(year)s/</field>
+        <field name="padding">5</field>
+        <field name="number_increment">1</field>
+    </record>
+</odoo>
